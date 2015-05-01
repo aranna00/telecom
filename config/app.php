@@ -145,6 +145,12 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
+	    /*
+	     * Added package Service Providers
+	     */
+
+		'Barryvdh\Debugbar\ServiceProvider',
+
 	],
 
 	/*
@@ -193,6 +199,11 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
+	    /*
+	     * Added Package Facades
+	     */
+
+		'Debugbar' => 'Barryvdh\Debugbar\Facade',
 	],
 
 ];
