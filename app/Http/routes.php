@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
+
+	Route::resource('phones','PhoneController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

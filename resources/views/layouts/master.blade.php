@@ -10,6 +10,7 @@
 
     <!-- Fonts -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,12 +20,34 @@
     <![endif]-->
 </head>
 <body>
+<div class="wrapper">
 @include('layouts.header')
 
 @yield('content')
 
+</div>
 <!-- Scripts -->
+<!-- base scripts -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<!-- theme scripts -->
+<script src="{{ asset('js/jquery-migrate-1.2.1.js') }}"></script>
+<script src="{{ asset("http://maps.google.com/maps/api/js?sensor=false&amp;language=en") }}"></script>
+<script src="{{ asset("js/gmap3.min.js") }}"></script>
+<script src="{{ asset("js/bootstrap-hover-dropdown.min.js") }}"></script>
+<script src="{{ asset("js/owl.carousel.min.js") }}"></script>
+<script src="{{ asset("js/css_browser_selector.min.js") }}"></script>
+<script src="{{ asset("js/echo.min.js") }}"></script>
+<script src="{{ asset("js/jquery.easing-1.3.min.js") }}"></script>
+<script src="{{ asset("js/bootstrap-slider.min.js") }}"></script>
+<script src="{{ asset("js/jquery.raty.min.js") }}"></script>
+<script src="{{ asset("js/jquery.prettyPhoto.min.js") }}"></script>
+<script src="{{ asset("js/jquery.customSelect.min.js") }}"></script>
+<script src="{{ asset("js/wow.min.js") }}"></script>
+<script src="{{ asset("js/scripts.js") }}"></script>
+
+{{--<script src="http://w.sharethis.com/button/buttons.js"></script>--}}
+
 </body>
 </html>

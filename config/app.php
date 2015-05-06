@@ -150,6 +150,7 @@ return [
 	     */
 
 		'Barryvdh\Debugbar\ServiceProvider',
+		'Khill\Fontawesome\FontAwesomeServiceProvider',
 
 	],
 
