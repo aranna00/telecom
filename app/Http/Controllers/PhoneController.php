@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App;
 
+use App\Phone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -16,7 +17,7 @@ class PhoneController extends Controller {
 	 */
 	public function index()
 	{
-		$phones = App\Phone::with('spec')->get();
+		$phones = Phone::all();
 		$brands = Cache::get('brands');
 		$priceLowest = Cache::get('priceLowest');
 		$priceHighest = Cache::get('priceHighest');
@@ -51,7 +52,9 @@ class PhoneController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$phone = Phone::find($id);
+		$pictures = json_decode($phone->pictures);
+		return view('phone.show',['phone'=>$phone,'pictures'=>$pictures]);
 	}
 
 	/**
