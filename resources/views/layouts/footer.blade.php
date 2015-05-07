@@ -41,8 +41,10 @@
                     <p class="regular-bold"> Feel free to contact us via phone,email or just send us mail.</p>
 
                     <p>
-                        74 Espelerlaan, Emmeloord, 8302DC, NL
-                        (+31) 625 192 672
+                        huisnummer adress, stad, postcode, landcode
+                        telefoon nummer
+                        {{--74 Espelerlaan, Emmeloord, 8302DC, NL--}}
+                        {{--(+31) 625 192 672--}}
                     </p>
 
                     <div class="social-icons">
@@ -109,7 +111,6 @@
                         <li>{!! FA::icon('cc-visa')->x2() !!}</li>
                         <li>{!! FA::icon('cc-mastercard')->x2() !!}</li>
                         <li>{!! FA::icon('cc-paypal')->x2() !!}</li>
-                        <li><img alt="" src="{{ asset('images/payments/payment-skrill.png') }}"></li>
                     </ul>
                 </div><!-- /.payment-methods -->
             </div>

@@ -18,7 +18,7 @@
                     <div class="single-product-gallery-thumbs gallery-thumbs">
                         <div id="owl-single-product-thumbnails">
                             @foreach($pictures as $key=>$picture)
-                                <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="{{ $key }}" href="#slide{{ $key }}">
+                                <a class="horizontal-thumb @if($key === 1) active @endif" data-target="#owl-single-product" data-slide="{{ $key }}" href="#slide{{ $key }}">
                                     <img width="67" alt="" src="{{ asset('images/blank.gif') }}" data-echo="{{ asset($picture) }}">
                                 </a>
                             @endforeach
@@ -42,7 +42,7 @@
                     <div class="brand">{{ $phone->brand }}</div>
 
                     <div class="excerpt">
-                        <p>{{ $phone->description }}</p>
+                        <p>{!! $phone->excerpt !!}</p>
                     </div>
 
                     <div class="prices">
@@ -64,7 +64,7 @@
 
                 <div class="tab-content">
                     <div class="tab-pane active" id="description">
-                        {{ $phone->description }}
+                        {!! $phone->description !!}
                     </div>
                     <div class="tab-pane" id="specifications">
                         <ul class="tabled-data">

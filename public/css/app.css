@@ -13468,3 +13468,6 @@ label,
 .checkbox label {
   font-weight: 300;
 }
+.control-bar {
+  height: 58px;
+}

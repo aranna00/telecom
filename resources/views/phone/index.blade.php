@@ -22,16 +22,9 @@
                     <div class="grid-list-products">
                         <h2 class="section-title">Phones</h2>
                         <div class="control-bar">
-                            <div class="le-select" id="item-count">
-                                <select>
-                                    <option value="1">24 per page</option>
-                                    <option value="2">32 per page</option>
-                                    <option value="3">48 per page</option>
-                                </select>
-                            </div>
                             <div class="grid-list-buttons">
                                 <ul>
-                                    <li class="grid-list-button-item"><a data-toggle="tab" href="#grid-view">{!! FA::icon('th-large') !!} Grid</a></li>
+                                    <li class="grid-list-button-item active"><a data-toggle="tab" href="#grid-view">{!! FA::icon('th-large') !!} Grid</a></li>
                                     <li class="grid-list-button-item"><a data-toggle="tab" href="#list-view">{!! FA::icon('th-list') !!} List</a></li>
                                 </ul>
                             </div>
@@ -87,7 +80,7 @@
                                                         {{ $phone->brand }}
                                                     </div>
                                                     <div class="excerpt">
-                                                        {{ $phone->description }}
+                                                        {!! $phone->excerpt !!}
                                                     </div>
                                                 </div>
                                             </div>

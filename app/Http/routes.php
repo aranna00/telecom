@@ -15,7 +15,7 @@ Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-	Route::resource('phones','PhoneController');
+	Route::resource('phones','PhoneController',['only'=>['index','show']]);
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
