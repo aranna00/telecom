@@ -1,4 +1,7 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+@import "owl.carousel.css";
+@import "owl.transitions.css";
+@import "prettyPhoto.css";
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
