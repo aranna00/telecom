@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Middleware\CutString;
-use App\Http\Requests;
 use App;
 
 use App\Phone;
