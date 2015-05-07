@@ -14,7 +14,7 @@ class AddImagesAndMainImageColumsToPhonesTable extends Migration {
 	{
 		Schema::table('phones', function(Blueprint $table)
 		{
-			$table->char('main_pic')->after('description');
+			$table->integer('main_pic')->after('description');
 			$table->text('pictures')->after('main_pic');
 		});
 	}
