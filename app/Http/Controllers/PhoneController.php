@@ -5,7 +5,6 @@ use App;
 
 use App\Phone;
 use Illuminate\Support\Facades\Cache;
-use Laracasts\Flash\Flash;
 
 class PhoneController extends Controller {
 

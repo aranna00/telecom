@@ -2,7 +2,6 @@
 
 use App\Contract;
 use App\Http\Middleware\CutString;
-use App\Http\Requests;
 use App\Phone;
 
 class ContractController extends Controller
