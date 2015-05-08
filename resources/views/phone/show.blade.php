@@ -36,15 +36,11 @@
             <div class="no-margin col-xs-12 col-sm-7 body-holder">
                 <div class="body">
                     <div class="star-holder inline"><div class="start" data-score="4"></div></div>
-                    <div class="availability"><label>Availability:</label><span class="available"> In stock</span></div>
-
                     <div class="title"><a href="#">{{ $phone->brand." ".$phone->model }}</a></div>
                     <div class="brand">{{ $phone->brand }}</div>
-
                     <div class="excerpt">
                         <p>{!! $phone->excerpt !!}</p>
                     </div>
-
                     <div class="prices">
                         <div class="price-current">${{ $phone->costs }}</div>
                     </div>

@@ -20,7 +20,7 @@
             <div class="col-xs-12 col-sm-9 no-margin wide sidebar">
                 <section id="gaming">
                     <div class="grid-list-products">
-                        <h2 class="section-title">Contracts</h2>
+                        <h2 class="section-title">{{ $phone->brand }} {{ $phone->model }} Contracts</h2>
                     </div>
                     <div class="products-list">
                         @foreach($contracts as $contract)
@@ -37,7 +37,7 @@
                                                 <a href="{{ action('ContractController@show',$contract->id) }}">{{ $contract->name }}</a>
                                             </div>
                                             <div class="brand">
-                                                {{ $phone->brand }}
+                                                {{ $phone->brand }} {{ $phone->model }}
                                             </div>
                                             <div class="excerpt">
                                                 {!! $contract->excerpt !!}
@@ -47,7 +47,7 @@
                                     <div class="no-margin col-xs-12 col-sm-3 price-area">
                                         <div class="right-clmn">
                                             <div class="price-current">{{ $contract->cost }} p/mth</div>
-                                            <a class="le-button" href="{{ action('ContractController@show',$phone->id) }}">View Item</a>
+                                            <a class="le-button" href="{{ action('ContractController@show',$contract->id) }}">View Item</a>
                                             <div>Phone price: {{ $contract->phone_price }}</div>
                                             <div class="small">Contract lenght: {{ $contract->length }}</div>
                                         </div>

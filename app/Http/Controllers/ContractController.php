@@ -35,6 +35,9 @@ class ContractController extends Controller
 	public function show($id)
 	{
 		$contract = Contract::find($id);
-		return view('contracts.show',['contract'=>$contract]);
+		$phone = Phone::find($contract->phone_id);
+		$pictures = json_decode($phone->pictures);
+		$contract->excerpt = CutString::truncate($contract->description,1000);
+		return view('contracts.show',['contract'=>$contract,'phone'=>$phone,'pictures'=>$pictures]);
 	}
 }
