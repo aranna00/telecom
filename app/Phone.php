@@ -14,7 +14,7 @@ class Phone extends Model {
 
 	public function contract()
 	{
-		return $this->belongsTo('App\Contract', 'id', 'phone_id');
+		return $this->hasMany('App\Contract');
 	}
 
 }

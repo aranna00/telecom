@@ -9,7 +9,7 @@ class Contract extends Model {
 
 	public function phone ()
 	{
-		return $this->hasOne('App\Phone', 'phone_id', 'id');
+		return $this->belongsTo('App\Phone');
 	}
 
 	public function user()
