@@ -151,6 +151,7 @@ return [
 
 		'Barryvdh\Debugbar\ServiceProvider',
 		'Khill\Fontawesome\FontAwesomeServiceProvider',
+		'Laracasts\Flash\FlashServiceProvider',
 
 	],
 
@@ -205,6 +206,7 @@ return [
 	     */
 
 		'Debugbar' => 'Barryvdh\Debugbar\Facade',
+		'Flash' => 'Laracasts\Flash\Flash',
 	],
 
 ];

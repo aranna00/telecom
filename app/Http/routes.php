@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
-
-Route::get('home', 'HomeController@index');
+	Route::get('/', 'HomeController@index');
 
 	Route::resource('phones','PhoneController',['only'=>['index','show']]);
+	Route::get('contracts/phone/{phone_id}',['as'=>'contracts.phone','uses'=>'ContractController@index']);
+	Route::resource('contracts','ContractController',['only'=>['show']]);
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+	Route::controllers([
+		'auth' => 'Auth\AuthController',
+		'password' => 'Auth\PasswordController',
+	]);

@@ -38,6 +38,11 @@
                                     @foreach($phones as $phone)
                                         <div class="col-xs-12 col-sm-4 col-md-4 no-margin product-item-holder hover">
                                             <div class="product-item">
+                                                @if(!empty($phone->contract))
+                                                    <div class="ribbon red"><span><a class="contract" href="{{ action('ContractController@index',$phone->id) }}">Contract</a></span></div>
+                                                @else
+                                                    <div class="ribbon green"><span>Prepaid</span></div>
+                                                @endif
                                                 <div class="image">
                                                     <img width="auto" height="146" alt="" src="{{ asset('images/blank.gif') }}" data-echo="{{ asset(json_decode($phone->pictures)[$phone->main_pic]) }}" />
                                                 </div>
@@ -65,6 +70,11 @@
                             <div class="products-list">
                                 @foreach($phones as $phone)
                                     <div class="product-item product-item-holder">
+                                        @if(!empty($phone->contract))
+                                            <div class="ribbon red"><span><a class="contract" href="{{ action('ContractController@index',$phone->id) }}">Contract</a></span></div>
+                                        @else
+                                            <div class="ribbon green"><span>Prepaid</span></div>
+                                        @endif
                                         <div class="row">
                                             <div class="no-margin col-xs-12 col-sm-4 image-holder">
                                                 <div class="image">
@@ -87,7 +97,6 @@
                                             <div class="no-margin col-xs-12 col-sm-3 price-area">
                                                 <div class="right-clmn">
                                                     <div class="price-current">{{ $phone->costs }}</div>
-                                                    <div class="availability"><label>Availability:</label><span class="available">In stock</span> </div>
                                                     <a class="le-button" href="{{ action('PhoneController@show',$phone->id) }}">View Item</a>
                                                 </div>
                                             </div>

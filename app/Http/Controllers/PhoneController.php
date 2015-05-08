@@ -5,6 +5,7 @@ use App;
 
 use App\Phone;
 use Illuminate\Support\Facades\Cache;
+use Laracasts\Flash\Flash;
 
 class PhoneController extends Controller {
 
@@ -16,7 +17,8 @@ class PhoneController extends Controller {
 	public function index()
 	{
 		$phones = Phone::all();
-		foreach($phones as $phone)
+		$phones->load('contract');
+		foreach($phones as $key=> $phone)
 		{
 			$phone->excerpt = CutString::truncate($phone->description,500);
 		}
