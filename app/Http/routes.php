@@ -12,6 +12,10 @@
 */
 
 	Route::get('/', 'HomeController@index');
+	Route::get('/home',function()
+	{
+		return redirect('/');
+	});
 
 	Route::resource('phones','PhoneController',['only'=>['index','show']]);
 	Route::get('contracts/phone/{phone_id}',['as'=>'contracts.phone','uses'=>'ContractController@index']);
