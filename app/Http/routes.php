@@ -25,3 +25,10 @@
 		'auth' => 'Auth\AuthController',
 		'password' => 'Auth\PasswordController',
 	]);
+
+
+	Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware'=>'role'],function(){
+		Route::get('/','HomeController@index');
+		Route::resource('phones','PhoneController');
+		Route::get('phones/list','PhoneController@all');
+	});
