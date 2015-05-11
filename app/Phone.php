@@ -17,4 +17,9 @@ class Phone extends Model {
 		return $this->hasMany('App\Contract');
 	}
 
+	public function user()
+	{
+		return $this->belongsToMany('App\User');
+	}
+
 }

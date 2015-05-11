@@ -4,6 +4,9 @@
             <ul>
                 <li><a href="{{ url('/') }}">Home</a></li>
                 <li><a href="{{ action('PhoneController@index') }}">Phones</a></li>
+                @if(Auth::user()->hasRole('admin'))
+                <li><a href="{{ action('Admin\HomeController@index') }}">Admin Area</a></li>
+                @endif
             </ul>
         </div>
 
@@ -30,7 +33,7 @@
 
         <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
             <div class="logo">
-                <a href="index.html">
+                <a href="{{ action('HomeController@index') }}">
                     <img alt="logo" src="{{asset('images/logo.svg')}}" width="233" height="54"/>
                 </a>
             </div>
