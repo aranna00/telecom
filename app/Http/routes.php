@@ -30,5 +30,6 @@
 	Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware'=>'role'],function(){
 		Route::get('/','HomeController@index');
 		Route::resource('phones','PhoneController');
-		Route::get('phones/list','PhoneController@all');
+		Route::get('phones/list/all','PhoneController@all');
+		Route::any('/phones/list/phones-list','AjaxController@phoneList');
 	});

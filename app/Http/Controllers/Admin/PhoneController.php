@@ -115,4 +115,5 @@ class PhoneController extends Controller {
 		return view('admin.phone.list',['phones'=>$phones]);
 	}
 
+
 }

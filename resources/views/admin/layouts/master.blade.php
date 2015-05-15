@@ -31,7 +31,6 @@
     <![endif]-->
     <script src="{{ asset('/plugins/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/plugins/jquery-migrate.min.js') }}" type="text/javascript"></script>
-    <!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
     <script src="{{ asset('/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/plugins//bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js') }}" type="text/javascript"></script>
@@ -40,24 +39,24 @@
     <script src="{{ asset('/plugins/jquery.cokie.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/plugins/uniform/jquery.uniform.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/plugins/bootstrap-switch/js/bootstrap-switch.min.js')}}" type="text/javascript"></script>
-    <!-- END CORE PLUGINS -->
-    <!-- BEGIN PAGE LEVEL PLUGINS -->
     <script src="{{ asset('/plugins/flot/jquery.flot.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/plugins/flot/jquery.flot.resize.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/plugins/flot/jquery.flot.categories.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/plugins/jquery.pulsate.min.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/plugins/bootstrap-daterangepicker/moment.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/plugins/bootstrap-daterangepicker/daterangepicker.js') }}" type="text/javascript"></script>
-    <!-- IMPORTANT! fullcalendar depends on jquery-ui-1.10.3.custom.min.js for drag & drop support -->
     <script src="{{ asset('/plugins/fullcalendar/fullcalendar.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/plugins/jquery-easypiechart/jquery.easypiechart.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/plugins/jquery.sparkline.min.js')}}" type="text/javascript"></script>
-    <!-- END PAGE LEVEL PLUGINS -->
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="{{ asset('plugins/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js') }}"></script>
+    <script src="{{ asset('/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('/js/metronic.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js//layout.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js/index.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js/tasks.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/datatable.js') }}"></script>
+    <script src="{{ asset('/js/ecommerce-products.js') }}"></script>
 
     <script>
         jQuery(document).ready(function() {
@@ -71,6 +70,7 @@
             Index.initChat();
             Index.initMiniCharts();
             Tasks.initDashboardWidget();
+            EcommerceProducts.init();
         });
     </script>
 </body>

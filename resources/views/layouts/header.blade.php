@@ -4,8 +4,10 @@
             <ul>
                 <li><a href="{{ url('/') }}">Home</a></li>
                 <li><a href="{{ action('PhoneController@index') }}">Phones</a></li>
-                @if(Auth::user()->hasRole('admin'))
-                <li><a href="{{ action('Admin\HomeController@index') }}">Admin Area</a></li>
+                @if(!empty(Auth::user()->name))
+                    @if(Auth::user()->hasRole('admin'))
+                    <li><a href="{{ action('Admin\HomeController@index') }}">Admin Area</a></li>
+                    @endif
                 @endif
             </ul>
         </div>
