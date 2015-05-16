@@ -147,7 +147,7 @@ class AjaxController extends Controller {
 					$phone->model,
 					$phone->costs,
 					$phone->created_at->toDateTimeString(),
-					'<a href="' . action("PhoneController@show", $phone->id) . '" class="btn btn-xs default btn-editable"><i class="fa fa-pencil"></i> Edit</a>'
+					'<a href="' . action('Admin\PhoneController@edit', $phone->id) . '" class="btn btn-xs default btn-editable"><i class="fa fa-pencil"></i> Edit</a>'
 				];
 			}
 			elseif(!isset($_REQUEST['product_id'])){
@@ -157,7 +157,7 @@ class AjaxController extends Controller {
 					$phone->model,
 					$phone->costs,
 					$phone->created_at->toDateTimeString(),
-					'<a href="' . action("PhoneController@show", $phone->id) . '" class="btn btn-xs default btn-editable"><i class="fa fa-pencil"></i> Edit</a>'
+					'<a href="' . action('Admin\PhoneController@edit', $phone->id) . '" class="btn btn-xs default btn-editable"><i class="fa fa-pencil"></i> Edit</a>'
 				];
 			}
 		}
@@ -175,6 +175,6 @@ class AjaxController extends Controller {
 
 
 	public function EditImage($id){
-
+		echo true;
 	}
 }

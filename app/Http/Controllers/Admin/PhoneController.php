@@ -3,8 +3,17 @@
 use App\Http\Controllers\Controller;
 use App\Phone;
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\Validator;
+use Laracasts\Flash\Flash;
 
 class PhoneController extends Controller {
+	protected function formatValidationErrors(Validator $validator)
+	{
+		Flash::error($validator->errors()->first());
+		return $validator->errors()->all();
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -54,9 +63,34 @@ class PhoneController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		dd($_POST);
+		$rules = [
+			'brand'         =>  'required|alpha_dash',
+		    'model'         =>  'required|alpha_num',
+		    'description'   =>  'required',
+		    'costs'         =>  'required|numeric',
+		];
+		$this->validate($request,$rules);
+
+		$data = [
+			'brand'         =>  $request->brand,
+			'model'         =>  $request->model,
+		    'description'   =>  $request->description,
+		    'costs'         => $request->costs,
+		];
+
+		Phone::create($data);
+		if($request->continue==='')
+		{
+			Flash::success('The phone has been added');
+			return Redirect::action('Admin\PhoneController@create');
+		}
+		else{
+			Flash::success('The phone has been added');
+			return Redirect::action('Admin\PhoneController@index');
+		}
+
 	}
 
 	/**
@@ -81,8 +115,9 @@ class PhoneController extends Controller {
 	public function edit($id)
 	{
 		$phone = Phone::find($id);
+		$pictures = json_decode($phone->pictures);
 
-		return view('admin.phone.show',['phone'=>$phone]);
+		return view('admin.phone.edit',['phone'=>$phone,'pictures'=>$pictures]);
 	}
 
 	/**

@@ -45,8 +45,8 @@
                             <button class="btn green-haze btn-circle">
                                 {!! Fa::icon('check') !!} Save
                             </button>
-                            <button class="btn green-haze btn-circle">
-                                {!! FA::icon('check-circle') !!} Save & Continue Edit
+                            <button class="btn green-haze btn-circle" name="continue">
+                                {!! FA::icon('check-circle') !!} Save & Add More
                             </button>
                         </div>
                     </div>
@@ -69,26 +69,26 @@
                                     <div class="form-body">
                                         <div class="form-group">
                                             <div class="form-group">
-                                                {!! Html::decode(Form::label('product[brand]','Brand: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
+                                                {!! Html::decode(Form::label('brand','Brand: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
                                                 <div class="col-md-10">
-                                                    {!! Form::text('product[brand]','',['class'=>'form-control']) !!}
+                                                    {!! Form::text('brand','',['class'=>'form-control']) !!}
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                {!! Html::decode(Form::label('product[model]','Model: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
+                                                {!! Html::decode(Form::label('model','Model: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
                                                 <div class="col-md-10">
-                                                    {!! Form::text('product[model]','',['class'=>'form-control']) !!}
+                                                    {!! Form::text('model','',['class'=>'form-control']) !!}
                                                 </div>
                                             </div>
-                                            {!! Html::decode(Form::label('product[description]','Description: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
+                                            {!! Html::decode(Form::label('description','Description: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
                                             <div class="col-md-10">
-                                                {!! Form::textarea('product[description]','',['class'=>'form-control','id'=>'editor1'])  !!}
+                                                {!! Form::textarea('description','',['class'=>'form-control','id'=>'editor1'])  !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Html::decode(Form::label('product[costs]','Price: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
+                                            {!! Html::decode(Form::label('costs','Price: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
                                             <div class="col-md-10">
-                                                {!! Form::number('product[costs]','',['class'=>'form-control','step'=>'0.01']) !!}
+                                                {!! Form::number('costs','',['class'=>'form-control','step'=>'0.01']) !!}
                                             </div>
                                         </div>
                                     </div>
