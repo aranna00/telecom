@@ -68,27 +68,21 @@
                                 <div class="tab-pane active" id="tab_general">
                                     <div class="form-body">
                                         <div class="form-group">
-                                            {!! Html::decode(Form::label('product[name]','Name: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
-                                            <div class="col-md-10">
-                                                {!! Form::text('product[name]','',['class'=>'form-control']) !!}
+                                            <div class="form-group">
+                                                {!! Html::decode(Form::label('product[brand]','Brand: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
+                                                <div class="col-md-10">
+                                                    {!! Form::text('product[brand]','',['class'=>'form-control']) !!}
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
+                                            <div class="form-group">
+                                                {!! Html::decode(Form::label('product[model]','Model: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
+                                                <div class="col-md-10">
+                                                    {!! Form::text('product[model]','',['class'=>'form-control']) !!}
+                                                </div>
+                                            </div>
                                             {!! Html::decode(Form::label('product[description]','Description: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
                                             <div class="col-md-10">
                                                 {!! Form::textarea('product[description]','',['class'=>'form-control','id'=>'editor1'])  !!}
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            {!! Html::decode(Form::label('product[brand]','Brand: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
-                                            <div class="col-md-10">
-                                                {!! Form::text('product[brand]','',['class'=>'form-control']) !!}
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            {!! Html::decode(Form::label('product[model]','Model: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
-                                            <div class="col-md-10">
-                                                {!! Form::text('product[model]','',['class'=>'form-control']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
