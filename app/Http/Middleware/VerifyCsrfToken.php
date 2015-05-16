@@ -7,6 +7,7 @@ class VerifyCsrfToken extends \Illuminate\Foundation\Http\Middleware\VerifyCsrfT
 
 	protected $except_urls = [
 		'admin/phones/list/phones-list',
+		'admin/phones/{id}/edit/upload/images',
     ];
 
     public function handle($request, Closure $next)

@@ -8,8 +8,8 @@ var EcommerceProductsEdit = function () {
              
             browse_button : document.getElementById('tab_images_uploader_pickfiles'), // you can pass in id...
             container: document.getElementById('tab_images_uploader_container'), // ... or DOM Element itself
-             
-            url : "assets/plugins/plupload/examples/upload.php",
+
+            url : "images/upload",
              
             filters : {
                 max_file_size : '10mb',
@@ -143,7 +143,7 @@ var EcommerceProductsEdit = function () {
                 ] // set first column as a default sort by asc
             }
         });
-    } 
+    }
 
     var initComponents = function () {
         //init datepickers

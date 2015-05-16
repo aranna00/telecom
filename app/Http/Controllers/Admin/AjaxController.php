@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Phone;
 
@@ -172,5 +171,10 @@ class AjaxController extends Controller {
 		$records["recordsTotal"] = $iTotalRecords;
 		$records["recordsFiltered"] = count($records['data']);
 		echo json_encode($records);
+	}
+
+
+	public function EditImage($id){
+
 	}
 }

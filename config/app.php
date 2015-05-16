@@ -153,6 +153,7 @@ return [
 		'Khill\Fontawesome\FontAwesomeServiceProvider',
 		'Laracasts\Flash\FlashServiceProvider',
 		'Zizaco\Entrust\EntrustServiceProvider',
+		'Collective\Html\HtmlServiceProvider',
 
 	],
 
@@ -209,6 +210,8 @@ return [
 		'Debugbar' => 'Barryvdh\Debugbar\Facade',
 		'Flash' => 'Laracasts\Flash\Flash',
 		'Entrust' => 'Zizaco\Entrust\EntrustFacade',
+		'Form' => 'Collective\Html\FormFacade',
+		'Html' => 'Collective\Html\HtmlFacade',
 	],
 
 ];

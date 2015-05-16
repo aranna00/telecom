@@ -17,6 +17,10 @@
 		return redirect('/');
 	});
 
+	Route::any('/test',function(){
+		return view('test');
+	});
+
 	Route::resource('phones','PhoneController',['only'=>['index','show']]);
 	Route::get('contracts/phone/{phone_id}',['as'=>'contracts.phone','uses'=>'ContractController@index']);
 	Route::resource('contracts','ContractController',['only'=>['show']]);
@@ -32,4 +36,5 @@
 		Route::resource('phones','PhoneController');
 		Route::get('phones/list/all','PhoneController@all');
 		Route::any('/phones/list/phones-list','AjaxController@phoneList');
+		Route::any('/phones/{id}/edit/upload/images','AjaxController@CreateImage');
 	});

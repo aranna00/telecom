@@ -8,6 +8,7 @@
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
+    <script src="{{ asset('/plugins/jquery.min.js') }}" type="text/javascript"></script>
     <!-- END THEME STYLES -->
 </head>
 <body class="page-boxed page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed-hide-logo">
@@ -29,7 +30,7 @@
     <script src="{{ asset('/plugins/respond.min.js') }}"></script>
     <script src="{{ asset('/plugins/excanvas.min.js') }}"></script>
     <![endif]-->
-    <script src="{{ asset('/plugins/jquery.min.js') }}" type="text/javascript"></script>
+
     <script src="{{ asset('/plugins/jquery-migrate.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
@@ -51,12 +52,17 @@
     <script src="{{ asset('plugins/datatables/media/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ asset('/plugins/plupload/js/plupload.full.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/plugins/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('/js/metronic.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js//layout.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js/index.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js/tasks.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js/datatable.js') }}"></script>
     <script src="{{ asset('/js/ecommerce-products.js') }}"></script>
+    <script src="{{ asset('/js/ecommerce-products-edit.js') }}"></script>
 
     <script>
         jQuery(document).ready(function() {
@@ -71,6 +77,8 @@
             Index.initMiniCharts();
             Tasks.initDashboardWidget();
             EcommerceProducts.init();
+            EcommerceProductsEdit.init();
         });
     </script>
+
 </body>
