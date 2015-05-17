@@ -6,20 +6,21 @@ use Illuminate\Session\TokenMismatchException;
 class VerifyCsrfToken extends \Illuminate\Foundation\Http\Middleware\VerifyCsrfToken {
 
 	protected $except_urls = [
-		'admin/phones/list/phones-list',
-		'admin/phones/{id}/edit/upload/images',
+		'/phones/list/phones-list',
+		'/phones/\d/edit/images/upload',
     ];
 
-    public function handle($request, Closure $next)
-    {
-	    $regex = '#' . implode('|', $this->except_urls) . '#';
+	public function handle($request, Closure $next)
+	{
+		$regex = '#' . implode('|', $this->except_urls) . '#';
 
-	    if ($this->isReading($request) || $this->tokensMatch($request) || preg_match($regex, $request->path()))
-	    {
-		    return $this->addCookieToResponse($request, $next($request));
-	    }
+		if ($this->isReading($request) || $this->tokensMatch($request) || preg_match($regex, $request->path()))
+		{
+			return $this->addCookieToResponse($request, $next($request));
+		}
 
-	    throw new TokenMismatchException;
-    }
+		throw new TokenMismatchException;
+	}
+
 
 }

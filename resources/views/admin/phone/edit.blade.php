@@ -23,7 +23,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            {!! Form::open(['action'=>'Admin\PhoneController@store','class'=>'form-horizontal form-row-seperated']) !!}
+            {!! Form::model($phone, ['action'=>['Admin\PhoneController@update',$phone->id],'class'=>'form-horizontal form-row-seperated','files'=>true]) !!}
             <div class="portlet light">
                 <div class="portlet-title">
                     <div class="caption">
@@ -39,13 +39,13 @@
                         <button type="button" name="back" class="btn btn-default btn-circle">
                             {!! FA::icon('angle-left') !!} back
                         </button>
-                        <button class="btn btn-default btn-circle">
-                            {!!  FA::icon('reply') !!} Reset
-                        </button>
+                        <a class="btn btn-default btn-circle" href="{{ action('Admin\PhoneController@all') }}">
+                            {!!  FA::icon('reply') !!} Back
+                        </a>
                         <button class="btn green-haze btn-circle">
                             {!! Fa::icon('check') !!} Save
                         </button>
-                        <button class="btn green-haze btn-circle">
+                        <button class="btn green-haze btn-circle" name="continue" value="continue">
                             {!! FA::icon('check-circle') !!} Save & Continue Edit
                         </button>
                     </div>
@@ -68,33 +68,27 @@
                             <div class="tab-pane active" id="tab_general">
                                 <div class="form-body">
                                     <div class="form-group">
-                                        {!! Html::decode(Form::label('product[name]','Name: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
+                                        <div class="form-group">
+                                            {!! Html::decode(Form::label('brand','Brand: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
+                                            <div class="col-md-10">
+                                                {!! Form::text('brand',$phone->brand,['class'=>'form-control']) !!}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            {!! Html::decode(Form::label('model','Model: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
+                                            <div class="col-md-10">
+                                                {!! Form::text('model',$phone->model,['class'=>'form-control']) !!}
+                                            </div>
+                                        </div>
+                                        {!! Html::decode(Form::label('description','Description: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
                                         <div class="col-md-10">
-                                            {!! Form::text('product[name]','',['class'=>'form-control']) !!}
+                                            {!! Form::textarea('description',$phone->description,['class'=>'form-control','id'=>'editor1'])  !!}
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        {!! Html::decode(Form::label('product[description]','Description: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
+                                        {!! Html::decode(Form::label('costs','Price: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
                                         <div class="col-md-10">
-                                            {!! Form::textarea('product[description]','',['class'=>'form-control','id'=>'editor1'])  !!}
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        {!! Html::decode(Form::label('product[brand]','Brand: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
-                                        <div class="col-md-10">
-                                            {!! Form::text('product[brand]','',['class'=>'form-control']) !!}
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        {!! Html::decode(Form::label('product[model]','Model: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
-                                        <div class="col-md-10">
-                                            {!! Form::text('product[model]','',['class'=>'form-control']) !!}
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        {!! Html::decode(Form::label('product[costs]','Price: <span class="required">* </span>',['class'=>'col-md-2 control-label'])) !!}
-                                        <div class="col-md-10">
-                                            {!! Form::number('product[costs]','',['class'=>'form-control','step'=>'0.01']) !!}
+                                            {!! Form::number('costs',$phone->costs,['class'=>'form-control','step'=>'0.01']) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -113,16 +107,41 @@
                                 <table class="table table-bordered table-hover">
                                     <thead>
                                     <tr role="row" class="heading">
-                                        <th>
+                                        <th width="10%">
                                             Image
                                         </th>
                                         <th>
-                                            Label
+                                            location
                                         </th>
-                                        <th></th>
+                                        <th width="10%">
+                                            Main Image
+                                        </th>
+                                        <th width="10%"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($pictures as $key => $picture)
+                                            <tr>
+                                                <td>
+                                                    <a href="{{ asset($picture) }}" class="fancybox-button" data-rel="fancybox-button">
+                                                        <img class="img-responsive" src="{{ asset($picture) }}" alt="">
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    {!! Form::text('label',$picture,['class'=>'form-control']) !!}
+                                                </td>
+                                                <td>
+                                                    <label>
+                                                        {!! Form::radio('main_pic', $key) !!}
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-default btn-sm">
+                                                        {!! FA::icon('times') !!} Remove
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

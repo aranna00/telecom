@@ -34,7 +34,8 @@
 	Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware'=>'role'],function(){
 		Route::get('/','HomeController@index');
 		Route::resource('phones','PhoneController');
-		Route::get('phones/list/all','PhoneController@all');
-		Route::any('/phones/list/phones-list','AjaxController@phoneList');
-		Route::any('/phones/{id}/edit/upload/images','AjaxController@CreateImage');
+		Route::post('phones/{id}',['uses'=>'PhoneController@update']);
+		Route::any('/phones/list/all',['uses'=>'PhoneController@all','as'=>'admin.phones.list']);
+		Route::any('/phones/list/phones-list',['uses'=>'AjaxController@phoneList','as'=>'admin.phones.list.phones-list']);
+		Route::any('/phones/{id}/edit/images/upload',['uses'=>'PhoneController@addImage','as'=>'admin.phones.edit.image.upload']);
 	});

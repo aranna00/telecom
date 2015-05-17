@@ -173,8 +173,4 @@ class AjaxController extends Controller {
 		echo json_encode($records);
 	}
 
-
-	public function EditImage($id){
-		echo true;
-	}
 }

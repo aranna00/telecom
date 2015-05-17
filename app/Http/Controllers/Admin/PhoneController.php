@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Phone;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Validator;
 use Laracasts\Flash\Flash;
@@ -115,7 +116,12 @@ class PhoneController extends Controller {
 	public function edit($id)
 	{
 		$phone = Phone::find($id);
-		$pictures = json_decode($phone->pictures);
+		if(is_array(json_decode($phone->pictures))) {
+			$pictures = json_decode($phone->pictures);
+		}
+		else{
+			$pictures = [];
+		}
 
 		return view('admin.phone.edit',['phone'=>$phone,'pictures'=>$pictures]);
 	}
@@ -128,7 +134,15 @@ class PhoneController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+		$phone = Phone::find($id);
+		$data = Input::except('_token','label','continue');
+		$phone->update($data);
+		if (isset($_POST['continue'])) {
+			return Redirect::action('Admin\PhoneController@edit',$phone->id);
+		}
+		else{
+			return Redirect::action('Admin\PhoneController@all');
+		}
 	}
 
 	/**
@@ -149,5 +163,26 @@ class PhoneController extends Controller {
 		return view('admin.phone.list',['phones'=>$phones]);
 	}
 
+	public function addImage($id)
+	{
+		if(Input::hasFile('file')&&Input::file('file')->isValid())
+		{
+			$phone = Phone::find($id);
+			$name = time().Input::file('file')->getClientOriginalName();
+			$location = 'images/phones/';
+			$file = Input::file('file')->move($location,$name);
+
+			$pictures = json_decode($phone->pictures);
+			$pictures[] = $location.$name;
+			$data['pictures']=json_encode($pictures);
+			$phone->update($data);
+
+			echo '{"jsonrpc" : "2.0", "result" : OK, "id" : "id"}';
+		}
+		else
+		{
+			echo '{"jsonrpc" : "2.0", "error" : {"code": 100, "message": "Failed to open temp directory."}, "id" : "id"}';
+		}
+	}
 
 }
