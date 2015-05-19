@@ -153,7 +153,9 @@ class PhoneController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		Phone::destroy($id);
+		Flash::success('The phone has been deleted');
+		return Redirect::action('Admin\PhoneController@all');
 	}
 
 	public function all()

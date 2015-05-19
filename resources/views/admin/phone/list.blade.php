@@ -102,4 +102,13 @@
         </div>
     </div>
 
+    <script>
+        function remove(url) {
+            if (confirm('Are you sure?'))
+            {
+                location = url;
+            }
+        }
+    </script>
+
 @endsection

@@ -2,11 +2,12 @@
 
 use App\Http\Controllers\Controller;
 use App\Phone;
+use Khill\Fontawesome\FontAwesome as FA;
 
 class AjaxController extends Controller {
 
 
-	public function phoneList()
+	public function phoneList(FA $FA)
 	{
 
 		$phones = Phone::all();
@@ -157,7 +158,7 @@ class AjaxController extends Controller {
 					$phone->model,
 					$phone->costs,
 					$phone->created_at->toDateTimeString(),
-					'<a href="' . action('Admin\PhoneController@edit', $phone->id) . '" class="btn btn-xs default btn-editable"><i class="fa fa-pencil"></i> Edit</a>'
+					'<a href="' . action('Admin\PhoneController@edit', $phone->id) . '" class="btn btn-xs default btn-editable"><i class="fa fa-pencil"></i> Edit</a> <a href="javascript:remove(\''.action('Admin\PhoneController@destroy',$phone->id).'\');" class="btn btn-xs default btn-editable">'. $FA->icon("exclamation-triangle").'Delete</a>'
 				];
 			}
 		}
