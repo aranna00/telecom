@@ -74,6 +74,8 @@
     <script>
         jQuery(document).ready(function() {
             Metronic.init(); // init metronic core componets
+            Metronic.setGlobalImgPath('{{ asset('/imgs/') }}');
+
             Layout.init(); // init layout
             Index.init();
             Index.initDashboardDaterange();

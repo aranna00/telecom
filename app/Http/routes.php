@@ -12,10 +12,7 @@
 */
 
 	Route::get('/', 'HomeController@index');
-	Route::get('/home',function()
-	{
-		return redirect('/');
-	});
+	Route::get('/home','HomeController@index');
 
 	Route::any('/test',function(){
 		return view('test');
@@ -36,9 +33,10 @@
 		Route::resource('phones','PhoneController');
 		Route::post('phones/{id}',['uses'=>'PhoneController@update']);
 		Route::any('/phones/list/all',['uses'=>'PhoneController@all','as'=>'admin.phones.list']);
-		Route::any('/phones/list/phones-list',['uses'=>'AjaxController@phoneList','as'=>'admin.phones.list.phones-list']);
+		Route::any('/phones/list/list',['uses'=>'AjaxController@phoneList','as'=>'admin.phones.list.list']);
 		Route::any('/phones/{id}/edit/images/upload',['uses'=>'PhoneController@addImage','as'=>'admin.phones.edit.image.upload']);
 		Route::any('/phones/{id}/destroy',['uses'=>'PhoneController@destroy','as'=>'admin.phones.destroy']);
 		Route::resource('/contracts/','ContractController');
 		Route::any('/contracts/list/all',['uses'=>'ContractController@all','as'=>'admin.contracts.list']);
+		Route::any('/contracts/list/list',['uses'=>'AjaxController@contractList','as'=>'admin.contracts.list.list']);
 	});

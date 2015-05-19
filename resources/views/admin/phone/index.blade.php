@@ -41,42 +41,6 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 margin-bottom-10">
-            <div class="dashboard-stat green-haze">
-                <div class="visual">
-                    {!! FA::icon('newspaper-o') !!}
-                </div>
-                <div class="details">
-                    <div class="number">
-                        {{ count($contracts) }}
-                    </div>
-                    <div class="desc">
-                        Amount of Contracts
-                    </div>
-                </div>
-                <a class="more" href="#">
-                    View more <i class="m-icon-swapright m-icon-white"></i>
-                </a>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 margin-bottom-10">
-            <div class="dashboard-stat red-intense">
-                <div class="visual">
-                    {!! FA::icon('money') !!}
-                </div>
-                <div class="details">
-                    <div class="number">
-                        {{ $revenuePM }}
-                    </div>
-                    <div class="desc">
-                        Revenue Per Month
-                    </div>
-                </div>
-                <a class="more" href="#">
-                    View more <i class="m-icon-swapright m-icon-white"></i>
-                </a>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 margin-bottom-10">
             <div class="dashboard-stat purple-soft">
                 <div class="visual">
                     {!! FA::icon('mobile-phone') !!}

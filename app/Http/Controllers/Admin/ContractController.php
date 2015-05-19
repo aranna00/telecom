@@ -3,10 +3,15 @@
 use App\Contract;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Validation\Validator;
 
 class ContractController extends Controller {
+	protected function formatValidationErrors(Validator $validator)
+	{
+		Flash::error($validator->errors()->first());
+		return $validator->errors()->all();
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -15,7 +20,22 @@ class ContractController extends Controller {
 	 */
 	public function index()
 	{
-		return view('admin.contract.index');
+		$users = User::all();
+		$users->load('phone');
+		$users->load('contract');
+		$contracts = Contract::all();
+		$revenuePM = 0;
+		$userContracts = [];
+		foreach($users as $user)
+		{
+			foreach($user->contract as $contract)
+			{
+				$revenuePM += $contract->cost;
+				$userContracts[] = $contract;
+			}
+		}
+
+		return view('admin.contract.index',['users'=>$users,'contracts'=>$contracts,'revenuePM'=>$revenuePM,'userContracts'=>$userContracts]);
 	}
 
 	/**

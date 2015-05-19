@@ -24,12 +24,10 @@ class PhoneController extends Controller {
 	public function index()
 	{
 		$users = User::all();
-		$users->load('contract');
 		$users->load('phone');
+		$users->load('contract');
 		$phones = Phone::all();
 		$revenue = 0;
-		$revenuePM = 0;
-		$contracts = [];
 		$phoneSales = [];
 		foreach($users as $user)
 		{
@@ -40,13 +38,11 @@ class PhoneController extends Controller {
 			}
 			foreach($user->contract as $contract)
 			{
-				$contracts[]=$contract;
 				$revenue+=$contract->phone_price;
-				$revenuePM+=$contract->cost;
 			}
 		}
 
-		return view('admin.phone.index',['phones'=>$phones,'revenue'=>$revenue,'revenuePM'=>$revenuePM,'contracts'=>$contracts,'phoneSales'=>$phoneSales]);
+		return view('admin.phone.index',['phones'=>$phones,'revenue'=>$revenue,'phoneSales'=>$phoneSales]);
 	}
 
 	/**

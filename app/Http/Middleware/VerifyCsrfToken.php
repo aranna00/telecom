@@ -6,8 +6,9 @@ use Illuminate\Session\TokenMismatchException;
 class VerifyCsrfToken extends \Illuminate\Foundation\Http\Middleware\VerifyCsrfToken {
 
 	protected $except_urls = [
-		'/phones/list/phones-list',
+		'/phones/list/list',
 		'/phones/\d/edit/images/upload',
+		'/contracts/list/list',
     ];
 
 	public function handle($request, Closure $next)
