@@ -38,4 +38,6 @@
 		Route::any('/phones/list/all',['uses'=>'PhoneController@all','as'=>'admin.phones.list']);
 		Route::any('/phones/list/phones-list',['uses'=>'AjaxController@phoneList','as'=>'admin.phones.list.phones-list']);
 		Route::any('/phones/{id}/edit/images/upload',['uses'=>'PhoneController@addImage','as'=>'admin.phones.edit.image.upload']);
+		Route::resource('/contracts/','ContractController');
+		Route::any('/contracts/list/all',['uses'=>'ContractController@all','as'=>'admin.contracts.list']);
 	});

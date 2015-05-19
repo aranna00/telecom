@@ -36,6 +36,34 @@
                     </li>
                 </ul>
             </li>
+            <li @if(strpos(Request::path(),'admin/contracts')!==false) class="active open" @endif>
+                <a href="javascript:;">
+                    {!! FA::icon('newspaper-o') !!}
+                    <span class="title">Contracts</span>
+                    @if(Request::path()=='admin/contracts') <span class="selected"></span>@endif
+                    <span class="arrow @if(Request::path()==='admin/contracts') open @endif"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li @if(Request::path()==='admin/contracts') class="active" @endif>
+                        <a href="{{ action('Admin\ContractController@index') }}">
+                            {!! FA::icon('home') !!}
+                            Dashboard
+                        </a>
+                    </li>
+                    <li @if(Request::path()==='admin/contracts/list') class="active" @endif>
+                        <a href="{{ action('Admin\ContractController@all') }}">
+                            {!! FA::icon('list-ul') !!}
+                            List View
+                        </a>
+                    </li>
+                    <li @if(Request::path()==='admin/contracts/create') class="active" @endif>
+                        <a href="{{ action('Admin\ContractController@create') }}">
+                            {!! FA::icon('plus') !!}
+                            Add Contract
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>
