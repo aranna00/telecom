@@ -1,12 +1,17 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Contract;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Phone;
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Validator;
+use Laracasts\Flash\Flash;
 
 class ContractController extends Controller {
+
 	protected function formatValidationErrors(Validator $validator)
 	{
 		Flash::error($validator->errors()->first());
@@ -45,17 +50,52 @@ class ContractController extends Controller {
 	 */
 	public function create()
 	{
-		return view('admin.contract.create');
+		$phones_array = [];
+		$phones_array['Default'][] = 'Default';
+		$phones = Phone::all();
+		foreach($phones as $phone)
+		{
+			$phones_array[$phone->brand][$phone->id] =$phone->brand.' '.$phone->model;
+		}
+		return view('admin.contract.create',['phones'=>$phones,'phones_array'=>$phones_array]);
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
+	 * @param \Illuminate\Http\Request $request
+	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$rules = [
+			'name'          => 'required',
+		    'description'   => 'required',
+		    'cost'          => 'required|numeric|min:0',
+		    'length'        => 'required|numeric|min:0',
+		    'phone'         => 'required|array',
+		    'phone_cost'    => 'required|array',
+		];
+		$this->validate($request,$rules);
+
+		$data = Input::except(['_token']);
+
+
+		$contract = new Contract();
+		$contract->name = $data['name'];
+		$contract->description = $data['description'];
+		$contract->cost = $data['cost'];
+		$contract->length = $data['length'];
+		$contract->save();
+		foreach($data['phone'] as $key => $phone) {
+			if(!empty($phone)) {
+				$contract->phone()->attach([$phone => ['phone_price' => $data['phone_cost'][$key]]]);
+			}
+		}
+
+		Flash::success('The Contract has been successfully added');
+		return Redirect::action('Admin\ContractController@index');
 	}
 
 	/**

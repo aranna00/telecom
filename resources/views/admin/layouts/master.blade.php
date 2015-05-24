@@ -87,6 +87,44 @@
             Tasks.initDashboardWidget();
             EcommerceProducts.init();
             EcommerceProductsEdit.init();
+            $(function(){
+
+                var values = new Array();
+
+                $(document).on('change', '.form-group-multiple-selects .input-group-multiple-select:last-child select', function(){
+
+                    var sInputGroupHtml = $(this).parent().html();
+                    var sInputGroupClasses = $(this).parent().attr('class');
+                    $(this).parent().parent().append('<div class="col-md-3"></div>');
+                    $(this).parent().parent().append('<div class="'+sInputGroupClasses+'">'+sInputGroupHtml+'</div>');
+
+                    updateValues();
+
+                });
+
+                $(document).on('change', '.form-group-multiple-selects .input-group-multiple-select:not(:last-child) select', function(){
+
+                    updateValues();
+
+                });
+
+                $(document).on('click', '.input-group-addon-remove', function(){
+                    $(this).parent().remove();
+                    updateValues();
+                });
+
+                function updateValues()
+                {
+                    values = new Array();
+                    $('.form-group-multiple-selects .input-group-multiple-select select').each(function(){
+                        var value = $(this).val();
+                        if(value != 0 && value != ""){
+                            values.push(value);
+                        }
+                    });
+
+                }
+            });
         });
     </script>
 

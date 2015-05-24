@@ -31,3 +31,24 @@
 @import (inline) "admin/bootstrap-datetimepicker.min.css";
 @import (inline) "admin/jqvmap.css";
 @import (inline) "admin/fullcalendar.min.css";
+
+div{
+  .input-group-multiple-select{
+    span.input-group-addon-remove{
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    margin-bottom: 5px;
+    :last-child {
+      span.input-group-addon-remove {
+        display: none;
+      }
+      input.form-control {
+        border-bottom-right-radius: 3px;
+        border-top-right-radius: 3px;
+      }
+    }
+
+  }
+}

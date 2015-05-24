@@ -16,11 +16,12 @@ class ContractController extends Controller
 	 */
 	public function index($phone_id)
 	{
-		$contracts = Contract::where('phone_id','=',$phone_id)->get();
-		foreach($contracts as $contract){
+		$contracts = [];
+		$phone = Phone::find($phone_id);
+		foreach($phone->contract as $contract){
+			$contracts[] = $contract;
 			$contract->excerpt = CutString::truncate($contract->description,500);
 		}
-		$phone = Phone::find($phone_id);
 		return view('contracts.index',['contracts'=>$contracts,'phone'=>$phone]);
 	}
 

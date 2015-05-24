@@ -1,8 +1,13 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Phone extends Model {
+
+	use SoftDeletes;
+
+	protected $dates = ['deleted_at'];
 
 	protected $table = 'phones';
 	protected $guarded = [];
@@ -14,12 +19,13 @@ class Phone extends Model {
 
 	public function contract()
 	{
-		return $this->hasMany('App\Contract');
+		return $this->belongsToMany('App\Contract')->withPivot('phone_price');
 	}
 
 	public function user()
 	{
 		return $this->belongsToMany('App\User');
 	}
+
 
 }

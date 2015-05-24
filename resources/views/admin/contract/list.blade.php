@@ -50,12 +50,6 @@
                                 Length
                             </th>
                             <th width="12%">
-                                Phone
-                            </th>
-                            <th width="12%">
-                                Phone Price
-                            </th>
-                            <th width="12%">
                                 Date Created
                             </th>
                             <th width="12%">
@@ -80,15 +74,6 @@
                                     <input type="number" class="form-control form-filter input-sm" name="length_from" placeholder="from">
                                 </div>
                                 <input type="number" class="form-control form-filter input-sm" name="length_to" placeholder="to">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control form-filter inpit-sm" name="phone">
-                            </td>
-                            <td>
-                                <div class="margin-bottom-5">
-                                    <input type="number" step="0.01" class="form-control form-filter input-sm" name="phone_price_from" placeholder="from">
-                                </div>
-                                <input type="number" step="0.01" class="form-control form-filter input-sm" name="phone_price_to" placeholder="to">
                             </td>
                             <td>
                                 <div class="input-group date date-picker margin-bottom-5" data-date-format="dd/mm/yyyy">

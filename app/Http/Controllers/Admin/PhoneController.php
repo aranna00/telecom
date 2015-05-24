@@ -10,6 +10,7 @@ use Illuminate\Validation\Validator;
 use Laracasts\Flash\Flash;
 
 class PhoneController extends Controller {
+
 	protected function formatValidationErrors(Validator $validator)
 	{
 		Flash::error($validator->errors()->first());

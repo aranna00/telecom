@@ -4,6 +4,7 @@ use App\Contract;
 use App\Http\Controllers\Controller;
 use App\Phone;
 use Khill\Fontawesome\FontAwesome as FA;
+use Symfony\Component\HttpFoundation\Response;
 
 class AjaxController extends Controller {
 
@@ -273,8 +274,6 @@ class AjaxController extends Controller {
 					$contract->name,
 					$contract->cost,
 					$contract->length.' years',
-					$contract->phone->brand . ' ' . $contract->phone->model,
-					$contract->phone_price,
 					$contract->created_at->toDateTimeString(),
 					'<a href="' . action('Admin\ContractController@edit', $contract->id) . '" class="btn btn-xs default btn-editable"><i class="fa fa-pencil"></i> Edit</a> <a href="javascript:remove(\''.action('Admin\ContractController@destroy',$contract->id).'\');" class="btn btn-xs default btn-editable">'. $FA->icon("exclamation-triangle").'Delete</a>',
 				];
@@ -288,14 +287,6 @@ class AjaxController extends Controller {
 					}
 				} else{
 					$id=false;
-				}
-				if (!empty($filter['phone'])) {
-					if(strpos($contract->phone->brand.' '.$contract->phone->model, $filter['phone']) !== false)$phone=true;
-					else{
-						$phone=false;
-					}
-				} else{
-					$phone=false;
 				}
 				if (!empty($filter['name'])) {
 					if(strpos($contract->name, $filter['name']) !== false)$name=true;
@@ -322,30 +313,6 @@ class AjaxController extends Controller {
 					}
 				} else {
 					$length_to = false;
-				}
-				if (!empty($filter['phone_price_from'])||$phone_price_changed) {
-					$filter['phone_price_from'] = 0;
-					if ($contract->phone_price >= $filter['phone_price_from']) {
-						$phone_price_from = true;
-					} else {
-						$phone_price_from = false;
-					}
-				} else {
-					$phone_price_from = false;
-				}
-				if (!empty($filter['phone_price_to'])) {
-					if ($contract->phone_price <= $filter['phone_price_to']) {
-						$phone_price_to = true;
-					} else {
-						$phone_price_to = false;
-					}
-				} else {
-					$phone_price_to = false;
-				}
-				if ($phone_price_to && $phone_price_from) {
-					$phone_price_range = true;
-				} else {
-					$phone_price_range = false;
 				}
 				if (!empty($filter['price_from'])) {
 					if ($contract->cost >= $filter['price_from']) {
@@ -400,14 +367,12 @@ class AjaxController extends Controller {
 				else{
 					$length_range = false;
 				}
-				if ($created_range || $price_range || $phone_price_range || $id || $length_range || $name || $phone) {
+				if ($created_range || $price_range || $id || $length_range || $name ) {
 					$records['data'][] = [
 						$contract->id,
 						$contract->name,
 						$contract->cost,
 						$contract->length.' years',
-						$contract->phone->brand . ' ' . $contract->phone->model,
-						$contract->phone_price,
 						$contract->created_at->toDateTimeString(),
 						'<a href="' . action('Admin\ContractController@edit', $contract->id) . '" class="btn btn-xs default btn-editable"><i class="fa fa-pencil"></i> Edit</a> <a href="javascript:remove(\''.action('Admin\ContractController@destroy',$contract->id).'\');" class="btn btn-xs default btn-editable">'. $FA->icon("exclamation-triangle").'Delete</a>',
 					];
